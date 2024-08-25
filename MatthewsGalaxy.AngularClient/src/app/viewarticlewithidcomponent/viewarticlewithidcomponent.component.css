@@ -1,0 +1,123 @@
+body {
+  background-color: #1e1b2e;
+  color: #ffffff;
+  font-family: 'Tinos', Times, serif;
+}
+
+.article-header {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 23, 46, 0.6);
+  border-bottom: 1px solid #012549;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.article-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.article-author {
+  font-size: 1.2em;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.article-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.article-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.article-date {
+  font-size: 1em;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #dee2e6;
+  margin: 20px 0;
+}
+
+.article-content {
+  text-align: left;
+  font-size: 1.2em;
+  color: white;
+}
+
+.times_new_roman {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.chip-container {
+  margin: 20px 0;
+}
+
+mat-chip {
+  margin: 5px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment-section {
+  margin-top: 20px;
+}
+
+.comment-title-input,
+.comment-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #4CAF50;
+  color: white;
+  background-color: #3b0a45;
+  resize: vertical;
+}
+
+.comment-title {
+  font-size: 1.5em;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.comment-title-input {
+  margin-bottom: 10px;
+}
+
+.comment-textarea {
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.submit-comment-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.submit-comment-button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid rgba(128, 0, 128, 0.8);
+}

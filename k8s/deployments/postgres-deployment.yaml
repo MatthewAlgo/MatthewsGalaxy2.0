@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matthewsgalaxy-db
+  namespace: matthewsgalaxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matthewsgalaxy-db
+  template:
+    metadata:
+      labels:
+        app: matthewsgalaxy-db
+    spec:
+      containers:
+      - name: postgres
+        image: ubuntu/postgres:latest
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        - name: POSTGRES_DB
+          value: "MatthewsGalaxy"
+        livenessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - postgres
+            - -d
+            - MatthewsGalaxy
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 5
+      restartPolicy: Always

@@ -1,0 +1,84 @@
+<div class="application-header-component">
+  <style>
+    .logo {
+      cursor: pointer;
+    }
+    .menu-icon {
+      cursor: pointer;
+    }
+    .menu-icon igx-icon {
+      color: white;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-logout {
+      display: flex;
+    }
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #buttonobj {
+      cursor: pointer;
+    }
+    .login-register {
+      display: flex;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .login-register-text {
+      margin-left: 8px;
+      font-size: 18px;
+    }
+    .login-register:hover {
+      color: #00bfff; /* Light up effect color */
+      transform: scale(1.1); /* Slightly enlarge on hover */
+    }
+  </style>
+  <div class="container-fluid" style="background-color: #011a33; padding: 10px; margin: 0px; border-radius: 10px; border-color: black; border-width: 1px;">
+    <div class="row">
+      <div class="col-md-4 d-flex align-items-center justify-content-start">
+        <div class="p-2">
+          <span igxIconButton="flat" igxToggleAction="navigation" (click)="onMenuClick()" class="menu-icon">
+            <igx-icon family="material">menu</igx-icon>
+          </span>
+        </div>
+        <div class="p-2">
+          <a routerLink="/">
+            <img src="assets/logo.png" alt="Logo" class="logo rounded-circle border border-dark" style="width: 200px; height: auto;" (click)="onImageClick()">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center align-items-center">
+        <p style="font-size: 24px; font-family: 'Pacifico', cursive;">Every human is a galaxy of thoughts and ideas</p>
+      </div>
+      <div class="col-md-4 d-flex justify-content-end align-items-center">
+        <ng-container *ngIf="authenticationService.isLoggedIn(); else notLoggedIn">
+          <div class="user-info">
+            <div class="admin-logout">
+              <div *ngIf="isUserAdmin()" class="p-2" id="buttonobj">
+                <mat-icon style="font-size: 20px;" routerLink="/adminpanel" (click)="onAdminPanelClick()">admin_panel_settings</mat-icon>
+              </div>
+              <div class="p-2" id="buttonobj">
+                <mat-icon style="font-size: 20px;" (click)="onLogoutClick()">logout</mat-icon>
+              </div>
+            </div>
+            <div style="color: white;" class="p-2">Hello, {{ authenticationService.getUsername() }}</div>
+            <div style="color: white;" class="p-2">Your role is {{ authenticationService.getFirstUserRole() }}</div>
+          </div>
+        </ng-container>
+        <ng-template #notLoggedIn>
+          <div class="login-register" routerLink="/register" (click)="onIconClick()">
+            <mat-icon style="font-size: 24px;">account_circle</mat-icon>
+            <span class="login-register-text">Login / Register</span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

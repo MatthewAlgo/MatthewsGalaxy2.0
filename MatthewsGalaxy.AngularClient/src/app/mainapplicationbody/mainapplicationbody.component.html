@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Introduction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: transparent;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column; /* Ensures vertical stacking of children */
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* Removed padding here for better container control */
+            box-sizing: border-box;
+            min-height: 100vh;
+            overflow-x: hidden; /* Ensure body doesn't overflow horizontally */
+        }
+
+        .container-fluid {
+            background: linear-gradient(135deg, rgba(50, 0, 50, 0.7), rgba(25, 0, 25, 0.5));
+            border-radius: 20px;
+            padding: 15px; /* Adjusted for better spacing */
+            color: white;
+            position: relative;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            width: 100%;
+            height: auto;
+            min-height: fit-content;
+            box-sizing: border-box;
+        }
+
+        .blog-intro {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px; /* Adjusted for better spacing */
+            box-sizing: border-box;
+            max-height: 300px; /* Adjust as needed */
+            overflow: auto; /* Allows scrolling */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+        }
+
+        .blog-intro::-webkit-scrollbar {
+            display: none; /* Hides the scrollbar */
+        }
+
+        .blog-intro-title {
+            font-size: 4vw; /* Responsive font size based on viewport width */
+        }
+
+        .blog-intro-text {
+            font-size: 2.5vw; /* Responsive font size based on viewport width */
+            color: #ddd;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .blog-intro-title {
+                font-size: 5vw; /* Adjusted for smaller screens */
+            }
+
+            .blog-intro-text {
+                font-size: 3vw; /* Adjusted for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-intro-title {
+                font-size: 6vw; /* Further adjustment for very small screens */
+            }
+
+            .blog-intro-text {
+                font-size: 4vw; /* Further adjustment for very small screens */
+            }
+        }
+
+        @media (max-width: 320px) {
+            .blog-intro-title {
+                font-size: 7vw; /* Further adjustment for very small screens */
+            }
+
+            .blog-intro-text {
+                font-size: 5vw; /* Further adjustment for very small screens */
+            }
+        }
+
+        .blog-matthewsgalaxy-intro, .blog-matthewsgalaxy-body {
+            width: 100%; /* Ensure full width for stacking */
+        }
+
+        .blog-matthewsgalaxy-intro {
+            text-align: center;
+            margin-bottom: 20px; /* Space between intro and articles */
+        }
+
+        .blog-matthewsgalaxy-body {
+            padding: 0; /* Adjust padding to fit content properly */
+        }
+
+        .container-fluid {
+            margin: 0 auto;
+            padding: 0;
+            max-width: 100%;
+        }
+
+        app-articleviewcomponent {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @keyframes all {
+            from {
+                transform: scale(0.9);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blog-matthewsgalaxy-intro">
+        <app-applicationblogintro></app-applicationblogintro>
+    </div>
+    <div class="blog-matthewsgalaxy-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <app-articleviewcomponent></app-articleviewcomponent>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

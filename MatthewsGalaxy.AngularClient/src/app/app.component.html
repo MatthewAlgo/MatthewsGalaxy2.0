@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .main-application-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image_wrapper {
+      background: url('../assets/main_bground.jpeg') no-repeat center center / cover;
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(0); /* Create a new stacking context */
+    }
+
+    .container-fluid {
+      background-color: transparent;
+      padding: 10px;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .row {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .col-md-12 {
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    app-applicationheader,
+    app-mainapplicationbody,
+    router-outlet,
+    app-applicationfooter {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .blog-matthewsgalaxy-intro {
+      text-align: center;
+    }
+
+    .blog-matthewsgalaxy-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-matthewsgalaxy-body .container-fluid {
+      margin-right: 0;
+      margin-left: 0;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .blog-matthewsgalaxy-body .col-md-12 {
+      width: 100%;
+    }
+
+    .dark-theme {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-theme igxDrawerItem {
+      color: #fff;
+    }
+
+    .dark-theme igxDrawerItem[active] {
+      background-color: #555;
+    }
+
+    .dark-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .dark-overlay.active {
+      display: block;
+    }
+
+    .img-fluid {
+      opacity: 0.6;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .content {
+      color: white;
+      text-align: center;
+    }
+
+    .content-wrap {
+      display: flex;
+      height: 100%;
+    }
+
+    main {
+      height: 100%;
+      overflow: auto;
+    }
+
+    :host {
+      display: block;
+      height: 100%;
+    }
+
+    /* Parallax Effect */
+    .parallax {
+      background-attachment: fixed;
+    }
+
+    /* Cursor Movement Effect */
+    .image_wrapper.move-effect {
+      transition: background-position 0.1s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-application-container">
+    <div id="overlay" class="dark-overlay"></div>
+    <igx-nav-drawer id="navigation" #drawer [isOpen]="false" [pinThreshold]="5000" class="dark-theme">
+      <ng-template igxDrawer>
+        <nav>
+          <span igxDrawerItem [isHeader]="true">Navigate</span>
+          <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple (click)="navigate(item)">
+            <igx-icon family="material">{{ item.name }}</igx-icon>
+            <span>{{ item.text }}</span>
+          </span>
+        </nav>
+      </ng-template>
+    </igx-nav-drawer>
+    <main>
+      <div class="image_wrapper parallax move-effect">
+        <div class="container-fluid content">
+          <div class="row">
+            <app-applicationheader (menuClick)="handleMenuClick()" (logoutClick)="handleLogoutClick()"></app-applicationheader>
+          </div>
+          <div class="router-outlet-container" style="flex: 1;">
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <app-applicationfooter></app-applicationfooter>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const imageWrapper = document.querySelector('.image_wrapper');
+      const overlay = document.getElementById('overlay');
+      const navigation = document.getElementById('navigation');
+
+      function onMouseMove(event) {
+        if (imageWrapper) {
+          const { clientX, clientY } = event;
+          const { innerWidth, innerHeight } = window;
+
+          const xPos = (clientX / innerWidth) * 10; // Adjust 10 for the intensity of movement
+          const yPos = (clientY / innerHeight) * 10; // Adjust 10 for the intensity of movement
+
+          imageWrapper.style.backgroundPosition = `${50 + xPos}% ${50 + yPos}%`;
+        }
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+
+      navigation.addEventListener('igxDrawerOpening', () => overlay.classList.add('active'));
+      navigation.addEventListener('igxDrawerClosing', () => overlay.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

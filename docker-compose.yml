@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  matthewsgalaxy-angularclient:
+    build: ./MatthewsGalaxy.AngularClient
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+    environment:
+      API_URL: "http://matthewsgalaxy-server:7263" # Use internal Docker network URL
+    depends_on:
+      - matthewsgalaxy-server
+      - matthewsgalaxy-workermicroservice
+      - matthewsgalaxy-db
+
+  matthewsgalaxy-db:
+    image: "ubuntu/postgres:latest"
+    networks:
+      - webnet
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "MatthewsGalaxy"
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  matthewsgalaxy-server:
+    build:
+      context: ./MatthewsGalaxy.ServerDir/
+      dockerfile: Dockerfile.server
+    depends_on:
+      - matthewsgalaxy-db
+    ports:
+      - "7263:8080"
+    networks:
+      - webnet
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__MatthewsGalaxyConnectionString: "Host=matthewsgalaxy-db;Database=MatthewsGalaxy;Username=postgres;Password=password"
+      JWT__ValidAudience: "http://matthewsgalaxy-angularclient:80"
+      JWT__ValidIssuer: "http://matthewsgalaxy-server:7263"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/api/BlogPosts || exit 1"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  matthewsgalaxy-workermicroservice:
+    build:
+      context: ./MatthewsGalaxy.ServerDir/
+      dockerfile: Dockerfile.worker
+    depends_on:
+      - matthewsgalaxy-db
+      - matthewsgalaxy-server
+    networks:
+      - webnet
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__MatthewsGalaxyConnectionString: "Host=matthewsgalaxy-db;Database=MatthewsGalaxy;Username=postgres;Password=password"
+      Backend__BaseUrl: "http://matthewsgalaxy-server:7263"
+      API_URL: "http://matthewsgalaxy-server:7263"
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/ || exit 1"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+networks:
+  webnet:
+    driver: bridge

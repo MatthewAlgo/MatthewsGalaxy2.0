@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: matthewsgalaxy-server
+  namespace: matthewsgalaxy
+spec:
+  ports:
+  - port: 7263
+  selector:
+    app: matthewsgalaxy-server

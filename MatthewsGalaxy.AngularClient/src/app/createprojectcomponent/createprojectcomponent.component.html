@@ -1,0 +1,25 @@
+<div class="add-project-container">
+  <h2 class="add-project-title">Add New Project</h2>
+  <form (ngSubmit)="submitProject()" #projectForm="ngForm" class="add-project-form">
+    <label for="project-name" class="form-label">Project Name</label>
+    <input type="text" id="project-name" class="form-input" placeholder="Enter project name" [(ngModel)]="localProject.name" name="name" required>
+
+    <label for="project-short-description" class="form-label">Short Description</label>
+    <input type="text" id="project-short-description" class="form-input" placeholder="Enter short description" [(ngModel)]="localProject.shortDescription" name="shortDescription" required>
+
+    <label for="project-description" class="form-label">Description</label>
+    <div id="project-description" #quillEditor></div>
+
+    <label for="project-type" class="form-label">Project Type</label>
+    <input type="text" id="project-type" class="form-input" placeholder="Enter project type" [(ngModel)]="localProject.projectType" name="projectType" required>
+
+    <label for="project-image" class="form-label">Project Image</label>
+    <div class="container">
+      <input type="file" class="form-control" id="UploadingControlInput" (change)="uploadImage($event)" placeholder="Upload Image">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-project-button">Submit Project</button>
+    </div>
+  </form>
+</div>

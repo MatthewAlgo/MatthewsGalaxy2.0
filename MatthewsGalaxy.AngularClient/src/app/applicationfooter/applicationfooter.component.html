@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Footer</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .footer {
+      background-color: rgba(5, 26, 52, 1);
+      color: white;
+      padding: 40px 0;
+    }
+    .footer h5 {
+      margin-bottom: 20px;
+      color: #f8f9fa;
+    }
+    .footer a {
+      color: #f8f9fa;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #adb5bd;
+    }
+    .footer .form-group {
+      margin-bottom: 15px;
+    }
+    .footer-bottom {
+      background-color: rgba(5, 26, 52, 0.8);
+      padding: 20px 0;
+      text-align: center;
+      color: #adb5bd;
+    }
+    .social-icons a {
+      color: #f8f9fa;
+      margin: 0 10px;
+      font-size: 1.5em;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #adb5bd;
+    }
+    .subscribe-form input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+    }
+    .subscribe-form button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+    .subscribe-form button:hover {
+      background-color: #0056b3;
+    }
+    .application-footer-component {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      background-color: transparent;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="application-footer-component">
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <h5>Matthew's Galaxy</h5>
+          <p>Explore the wonders of the universe. Stay connected for more updates and insights.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <h5>Subscribe to my newsletter</h5>
+          <form class="subscribe-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="form-group">
+              <input type="email" name="email" ngModel class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="col-sm-12 mb-2">
+              <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="reCAPTCHAToken" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+              <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+                <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <h5>Let's Connect</h5>
+          <div class="social-icons">
+            <a href="https://github.com/MatthewAlgo" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/dinu-matei-alexandru/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/matei__dinu/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <p>© 2024 Matthew's Galaxy. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

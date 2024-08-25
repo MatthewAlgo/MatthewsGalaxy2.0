@@ -1,0 +1,98 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Include the refined CSS here */
+  </style>
+</head>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <div class="container" *ngIf="currentUserRole === 'Admin'; else unauthorized">
+    <!-- Floating chips for adding projects and articles (moved to top) -->
+    <div class="top-chips">
+      <button class="chip add-chip" (click)="createProject()">
+        <span class="chip-text">Add Project</span>
+        <mat-icon>add</mat-icon>
+      </button>
+      <button class="chip add-chip" (click)="createArticle()">
+        <span class="chip-text">Add Article</span>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="section">
+
+      <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Articles</h2>
+      <div class="grid-container" *ngIf="articles.length > 0; else noArticles">
+        <div class="grid-item" *ngFor="let article of articles">
+          <app-articlecard [article]="article"></app-articlecard>
+          <div class="button-group">
+            <button class="chip add-chip" (click)="addTag(article)">
+              <span class="chip-text">Add Tag</span>
+              <mat-icon>label</mat-icon>
+            </button>
+            <button class="chip add-chip" (click)="addCategory(article)">
+              <span class="chip-text">Add Category</span>
+              <mat-icon>category</mat-icon>
+            </button>
+            <button class="chip remove-chip" (click)="removeArticle(article)">Remove Article</button>
+          </div>
+          <div class="category-list">
+            <div class="chip" *ngFor="let category of article.categories" (click)="removeCategory(article, category)"
+                [ngStyle]="{'background-color': getColorForString(category), 'padding': '10px', 'margin': '5px'}">
+              {{category}} <mat-icon>close</mat-icon>
+            </div>
+          </div>
+          <div class="tag-list">
+            <div class="chip" *ngFor="let tag of article.tags" (click)="removeTag(article, tag)"
+               [ngStyle]="{'background-color': getColorForString(tag), 'padding': '5px', 'margin': '5px'}">
+              {{tag}} <mat-icon>close</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noArticles>
+        <div class="no-articles">No articles available</div>
+      </ng-template>
+    </div>
+    <div class="section">
+
+      <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Projects</h2>
+      <div class="grid-container" *ngIf="projects.length > 0; else noProjects">
+        <div class="grid-item" *ngFor="let project of projects">
+          <app-projectcardcomponent [project]="project"></app-projectcardcomponent>
+          <button class="chip remove-chip" (click)="removeProject(project)">Remove Project</button>
+        </div>
+      </div>
+      <ng-template #noProjects>
+        <div class="no-projects">No projects available</div>
+      </ng-template>
+    </div>
+    <div class="section">
+
+      <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Users</h2>
+      <div class="grid-container" *ngIf="users.length > 0; else noUsers">
+        <div class="grid-item" *ngFor="let user of users">
+          <app-usercard [identityUser]="user"></app-usercard>
+          <button class="chip remove-chip" (click)="removeUser(user)">Remove User</button>
+        </div>
+      </div>
+      <ng-template #noUsers>
+        <div class="no-users">No users available</div>
+      </ng-template>
+    </div>
+  </div>
+
+  <ng-template #unauthorized>
+    <div class="unauthorized-banner">
+      Unauthorized to view this page
+    </div>
+  </ng-template>
+</body>
+</html>

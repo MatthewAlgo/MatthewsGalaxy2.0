@@ -1,0 +1,62 @@
+# Dotnet API files
+*.suo
+*.user
+*.vspscc
+*.vssscc
+*.vspscc
+*.vssscc
+*.scc
+*.bak
+*.cache
+*.resharper
+*.resharper.user
+*.resharper.sln
+*.env
+*.env.example
+*.env.local
+*.env.staging
+*.env.production
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.json
+
+# Angular gitignore
+node_modules
+dist
+e2e
+.idea
+.vscode
+*.log
+*.log.*
+*.log-*
+*.log/*
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+

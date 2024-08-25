@@ -1,0 +1,162 @@
+﻿html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.main-application-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.image_wrapper {
+  background: url('../assets/main_bground.jpeg') no-repeat center center / cover;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0); /* Create a new stacking context */
+}
+
+.container-fluid {
+  background-color: transparent;
+  padding: 10px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-12 {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+app-applicationheader,
+app-mainapplicationbody,
+router-outlet,
+app-applicationfooter {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.blog-matthewsgalaxy-intro {
+  text-align: center;
+}
+
+.blog-matthewsgalaxy-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-matthewsgalaxy-body .container-fluid {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.blog-matthewsgalaxy-body .col-md-12 {
+  width: 100%;
+}
+
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-theme igxDrawerItem {
+  color: #fff;
+}
+
+.dark-theme igxDrawerItem[active] {
+  background-color: #555;
+}
+
+.dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.dark-overlay.active {
+  display: block;
+}
+
+.img-fluid {
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  color: white;
+  text-align: center;
+}
+
+.content-wrap {
+  display: flex;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  overflow: auto;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+/* Parallax Effect */
+.parallax {
+  background-attachment: fixed;
+}
+
+/* Cursor Movement Effect */
+.image_wrapper.move-effect {
+  transition: background-position 0.1s ease-out;
+}
+
+igx-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;
+}
+

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matthewsgalaxy-server
+  namespace: matthewsgalaxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matthewsgalaxy-server
+  template:
+    metadata:
+      labels:
+        app: matthewsgalaxy-server
+    spec:
+      containers:
+      - name: server
+        image: your-repository/matthewsgalaxy-server:latest
+        ports:
+        - containerPort: 7263
+        envFrom:
+        - configMapRef:
+            name: matthewsgalaxy-config
+        livenessProbe:
+          httpGet:
+            path: /api/BlogPosts
+            port: 7263
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 5
+      restartPolicy: Always

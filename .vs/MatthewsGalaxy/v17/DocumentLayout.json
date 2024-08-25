@@ -1,0 +1,117 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{39653E29-9E79-4C91-B38F-01033F547DFE}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\MatthewsGalaxy.WorkerMicroservice.csproj|c:\\users\\matthew\\desktop\\matthewsgalaxy2.0\\matthewsgalaxy.serverdir\\matthewsgalaxy.workermicroservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{39653E29-9E79-4C91-B38F-01033F547DFE}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\MatthewsGalaxy.WorkerMicroservice.csproj|solutionrelative:matthewsgalaxy.serverdir\\matthewsgalaxy.workermicroservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFD284B3-3D6E-4BE1-906F-91521BC457DA}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\MatthewsGalaxy.Server.csproj|c:\\users\\matthew\\desktop\\matthewsgalaxy2.0\\matthewsgalaxy.serverdir\\matthewsgalaxy.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FFD284B3-3D6E-4BE1-906F-91521BC457DA}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\MatthewsGalaxy.Server.csproj|solutionrelative:matthewsgalaxy.serverdir\\matthewsgalaxy.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFD284B3-3D6E-4BE1-906F-91521BC457DA}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\MatthewsGalaxy.Server.csproj|c:\\users\\matthew\\desktop\\matthewsgalaxy2.0\\matthewsgalaxy.serverdir\\matthewsgalaxy.server\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FFD284B3-3D6E-4BE1-906F-91521BC457DA}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\MatthewsGalaxy.Server.csproj|solutionrelative:matthewsgalaxy.serverdir\\matthewsgalaxy.server\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFD284B3-3D6E-4BE1-906F-91521BC457DA}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\MatthewsGalaxy.Server.csproj|c:\\users\\matthew\\desktop\\matthewsgalaxy2.0\\matthewsgalaxy.serverdir\\matthewsgalaxy.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FFD284B3-3D6E-4BE1-906F-91521BC457DA}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\MatthewsGalaxy.Server.csproj|solutionrelative:matthewsgalaxy.serverdir\\matthewsgalaxy.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39653E29-9E79-4C91-B38F-01033F547DFE}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\MatthewsGalaxy.WorkerMicroservice.csproj|c:\\users\\matthew\\desktop\\matthewsgalaxy2.0\\matthewsgalaxy.serverdir\\matthewsgalaxy.workermicroservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39653E29-9E79-4C91-B38F-01033F547DFE}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\MatthewsGalaxy.WorkerMicroservice.csproj|solutionrelative:matthewsgalaxy.serverdir\\matthewsgalaxy.workermicroservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39653E29-9E79-4C91-B38F-01033F547DFE}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\MatthewsGalaxy.WorkerMicroservice.csproj|c:\\users\\matthew\\desktop\\matthewsgalaxy2.0\\matthewsgalaxy.serverdir\\matthewsgalaxy.workermicroservice\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39653E29-9E79-4C91-B38F-01033F547DFE}|MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\MatthewsGalaxy.WorkerMicroservice.csproj|solutionrelative:matthewsgalaxy.serverdir\\matthewsgalaxy.workermicroservice\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\appsettings.json",
+              "RelativeToolTip": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T16:46:03.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\appsettings.json",
+              "RelativeDocumentMoniker": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\appsettings.json",
+              "ToolTip": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\appsettings.json",
+              "RelativeToolTip": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T16:45:22.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Startup.cs",
+              "RelativeDocumentMoniker": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Startup.cs",
+              "ToolTip": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Startup.cs",
+              "RelativeToolTip": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Startup.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA1wBoAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T16:20:38.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Program.cs",
+              "RelativeDocumentMoniker": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Program.cs",
+              "ToolTip": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Program.cs",
+              "RelativeToolTip": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.WorkerMicroservice\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T16:20:37.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Program.cs",
+              "RelativeDocumentMoniker": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Program.cs",
+              "RelativeToolTip": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T16:20:30.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Startup.cs",
+              "RelativeDocumentMoniker": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Startup.cs",
+              "ToolTip": "C:\\Users\\Matthew\\Desktop\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Startup.cs",
+              "RelativeToolTip": "MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\Startup.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAIYAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T16:20:25.824Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

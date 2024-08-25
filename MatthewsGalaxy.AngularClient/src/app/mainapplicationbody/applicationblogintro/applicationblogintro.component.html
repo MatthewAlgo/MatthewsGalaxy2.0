@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Introduction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.container-fluid {
+    background: linear-gradient(135deg, rgba(50, 0, 50, 0.7), rgba(25, 0, 25, 0.5));
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    position: relative;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    width: 100%;
+    min-height: fit-content;
+}
+
+.blog-intro {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 25px;
+    box-sizing: border-box;
+    min-height: auto; /* Ensure height is auto and adapts to content */
+}
+
+.blog-intro-title {
+    font-size: 2.5em;
+}
+
+.blog-intro-text {
+    font-size: 1.3em;
+    font-family: 'Roboto', sans-serif;
+    color: #ddd;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container-fluid {
+        padding: 15px;
+    }
+
+    .blog-intro {
+        padding: 15px;
+    }
+
+    .blog-intro-title {
+        font-size: 2em;
+    }
+
+    .blog-intro-text {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container-fluid {
+        padding: 10px;
+    }
+
+    .blog-intro {
+        padding: 10px;
+    }
+
+    .blog-intro-title {
+        font-size: 1.8em;
+    }
+
+    .blog-intro-text {
+        font-size: 1em;
+    }
+}
+
+  </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="blog-intro">
+            <h1 class="blog-intro-title">Welcome to Matthew's Galaxy</h1>
+            <div class="blog-intro-text">
+                <p>Hey there! Welcome to my digital space where I share my experiences, insights, and adventures in the world of technology and beyond. Here's what you can expect:</p>
+                <ul>
+                    <li>💻 <strong>Tech Tales:</strong> Dive into my journey as a software developer, from projects to professional experiences.</li>
+                    <li>🚀 <strong>Career Insights:</strong> Explore the ins and outs of the tech industry, including my views on IoT, AI and dynamic web applications.</li>
+                    <li>💼 <strong>Job Perspectives:</strong> Get an insider's look at what it's like to work in the tech world, including my work experience and future aspirations.</li>
+                    <li>📈 <strong>Investment Journey:</strong> Follow along as I navigate the world of investing, sharing my thoughts and learnings along the way.</li>
+                    <li>🌟 <strong>Personal Growth:</strong> Join me in my continuous learning journey, from coding challenges to life lessons.</li>
+                    <li>🏋️ <strong>Life Balance:</strong> Discover how I maintain a balance between coding, working out, traveling, partying, and pursuing other interests.</li>
+                </ul>
+                <p>Whether you're a fellow tech enthusiast, a curious learner, or someone interested in the life of a young developer, there's something here for you. Let's explore the ever-evolving landscape of technology together and share in the excitement of growth and discovery.</p>
+                <p>Ready to embark on this journey? Let's dive in!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

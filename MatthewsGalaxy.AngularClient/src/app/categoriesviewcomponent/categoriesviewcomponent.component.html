@@ -1,0 +1,37 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Include the refined CSS here */
+  </style>
+</head>
+<div class="category-container">
+
+  <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Categories</h2>
+
+  <div class="category-grid">
+    <div *ngFor="let category of categories">
+      <!-- Only if the category has at least 1 article -->
+      <div *ngIf="category.numberOfArticles! > 0" class="category-articles category-card">
+      <a [routerLink]="['/category', category.name]" class="category-link">
+        <div class="category-content">
+          <h2 class="category-title">{{ category.name }}</h2>
+          <p class="category-description">{{ category.description }}</p>
+          <span class="view-articles">View Articles ({{ category.numberOfArticles }})</span>
+        </div>
+        <span class="ripple"></span>
+      </a>
+    </div>
+    <div *ngIf="category.numberOfArticles! === 0" class="category-card">
+      <div class="category-content">
+        <h2 class="category-title">{{ category.name }}</h2>
+        <p class="category-description">{{ category.description }}</p>
+        <span class="no-articles">No articles available</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="categories.length === 0" class="no-categories">No categories available</div>
+</div>

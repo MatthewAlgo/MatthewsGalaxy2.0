@@ -1,0 +1,176 @@
+<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+<style>
+  body {
+      background-color: #1e1b2e;
+      color: #ffffff;
+      font-family: 'Tinos', Times, serif;
+  }
+  .times-new-roman {
+      font-family: 'Tinos', Times, serif;
+  }
+  .article-header {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .article-title {
+      font-size: 2.5em;
+      color: #d4d4ff;
+  }
+  .article-author {
+      font-size: 1.2em;
+      color: #c0c0f0;
+  }
+  .article-container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 0 auto;
+      width: 80%;
+  }
+  .article-image {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 100%;
+      border-radius: 10px;
+  }
+  .article-date {
+      text-align: right;
+      color: #b0b0e0;
+  }
+  .divider {
+      border: 1px solid #4a4a6a;
+      margin: 20px 0;
+  }
+  .article-content {
+      color: #e0e0ff;
+      line-height: 1.6;
+  }
+  .comment-section {
+      margin-top: 20px;
+  }
+  .comment-title-input, .comment-textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #4a4a6a;
+      border-radius: 5px;
+      background-color: #2e2a45;
+      color: #ffffff;
+  }
+  .submit-comment-button {
+      background-color: #5a5ac9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+  }
+  .submit-comment-button:hover {
+      background-color: #7a7af7;
+  }
+  .comments-section {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 80%;
+  }
+  .comments-title {
+      font-size: 2em;
+      color: #d4d4ff;
+  }
+  .comment {
+      margin-bottom: 20px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+  }
+  .comment-author, .comment-date {
+      color: #b0b0e0;
+  }
+  .comment-title {
+      font-size: 1.5em;
+      color: #e0e0ff;
+  }
+  .comment-content {
+      color: #c0c0ff;
+      margin: 10px 0;
+      line-height: 1.4;
+  }
+  .remove-comment-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-top: 10px;
+      background-color: #ff4c4c;
+      color: white;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 0.8em;
+  }
+  .article-not-found {
+      text-align: center;
+      color: #ff4c4c;
+  }
+</style>
+
+<!-- If the article is not null -->
+<div class="times-new-roman">
+  <div *ngIf="article">
+    <div class="article-header">
+      <h1 class="article-title">{{ article.title }}</h1>
+      <div class="article-author">By {{ article.authorName ? article.authorName : 'Unknown' }}</div>
+      <div class="article-container">
+        <img [src]="article.featuredImageURL" alt="Article Image" class="article-image">
+        <div class="article-date">{{ article.publishedDate | date }}</div>
+        <hr class="divider">
+
+        <!-- Category Chips -->
+        <div class="chip-container">
+          <mat-chip *ngFor="let category of categories" [style.background-color]="getCategoryColor(category)" (click)="redirectToCategory(category)" igxRipple="
+            true
+          ">
+            {{ category.name }}
+          </mat-chip>
+        </div>
+
+        <markdown class="article-content" [innerHTML]="article.description"></markdown>
+        <hr class="divider">
+
+        <!-- Tag Chips -->
+        <div class="chip-container">
+          <mat-chip *ngFor="let tag of tags" [style.background-color]="getTagColor(tag)">
+            #{{ tag.tagName }}
+          </mat-chip>
+        </div>
+
+        <div class="comment-section">
+          <input type="text" [(ngModel)]="commentTitle" placeholder="Comment Title" class="comment-title-input">
+          <textarea [(ngModel)]="commentBody" placeholder="Write your comment here..." class="comment-textarea" maxlength="500"></textarea>
+          <button (click)="submitComment()" class="submit-comment-button">Submit Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="article">
+    <div class="comments-section">
+      <h2 class="comments-title">Comments</h2>
+      <div *ngFor="let comment of comments" class="comment">
+        <div class="comment-author comment-date">Created By {{ comment.author ? comment.author.userName : 'Unknown' }} at {{ comment.date | date }}</div>
+        <div class="comment-title">{{ comment.title }}</div>
+        <div class="comment-content">{{ comment.content }}</div>
+        <div *ngIf="comment.isLoggedUsersComment" class="remove-comment-chip" (click)="removeComment(comment)">Remove Comment</div>
+        <hr class="divider">
+      </div>
+      <div *ngIf="comments?.length === 0" class="comment">No comments available</div>
+    </div>
+  </div>
+
+  <div *ngIf="!article">
+    <div class="article-header">
+      <h1 class="article-title article-not-found">Article Not Found</h1>
+      <div class="article-author article-not-found">The article you are looking for does not exist.</div>
+    </div>
+  </div>
+</div>

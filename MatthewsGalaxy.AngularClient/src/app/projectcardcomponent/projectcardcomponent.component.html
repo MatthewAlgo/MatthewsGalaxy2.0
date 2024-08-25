@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Card</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .project-card {
+      max-width: 400px;
+      width: 100%;
+      margin: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(145deg, #37474f, #263238);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-wrapper {
+      position: relative;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .image-wrapper:hover .overlay {
+      opacity: 1;
+    }
+
+    .view-button {
+      color: #fff;
+      background-color: #ff6f61;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .view-button:hover {
+      background-color: #ff8a80;
+      transform: scale(1.05);
+    }
+
+    .content {
+      padding: 20px;
+      background: linear-gradient(145deg, #263238, #37474f);
+    }
+
+    .content h2 {
+      font-family: 'Lobster', cursive;
+      color: #ff6f61;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .content p {
+      color: #e0e0e0;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .details {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .type {
+      background-color: #ff6f61;
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="project-card">
+      <div class="image-wrapper">
+        <img *ngIf="imageData" [src]="imageData" alt="Project Image">
+        <img *ngIf="!imageData" src="https://via.placeholder.com/400" alt="Project Image">
+        <div class="overlay">
+          <button class="view-button" (click)="viewProject()">View Project</button>
+        </div>
+      </div>
+      <div class="content">
+        <h2>{{project?.name}}</h2>
+        <p>{{project?.shortDescription || 'This project has no description' | slice:0:100}}...</p>
+        <div class="details">
+          <span class="type">{{project?.projectType}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

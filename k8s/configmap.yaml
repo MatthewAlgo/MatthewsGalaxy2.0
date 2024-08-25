@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: matthewsgalaxy-config
+  namespace: matthewsgalaxy
+data:
+  API_URL: "http://matthewsgalaxy-server:7263"
+  ASPNETCORE_ENVIRONMENT: "Production"
+  ConnectionStrings__MatthewsGalaxyConnectionString: "Host=matthewsgalaxy-db;Database=MatthewsGalaxy;Username=postgres;Password=password"
+  JWT__ValidAudience: "http://matthewsgalaxy-angularclient:80"
+  JWT__ValidIssuer: "http://matthewsgalaxy-server:7263"

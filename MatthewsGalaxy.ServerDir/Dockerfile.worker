@@ -1,0 +1,77 @@
+# Stage 1: Build the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+WORKDIR /src
+
+# Copy csproj files and restore dependencies
+COPY MatthewsGalaxy.WorkerMicroservice/*.csproj ./MatthewsGalaxy.WorkerMicroservice/
+COPY MatthewsGalaxy.Server/*.csproj ./MatthewsGalaxy.Server/
+RUN dotnet restore MatthewsGalaxy.WorkerMicroservice/MatthewsGalaxy.WorkerMicroservice.csproj
+RUN dotnet restore MatthewsGalaxy.Server/MatthewsGalaxy.Server.csproj
+
+# Copy everything else and build
+COPY . .
+
+# Build the Worker Microservice
+WORKDIR /src/MatthewsGalaxy.WorkerMicroservice
+RUN dotnet build "MatthewsGalaxy.WorkerMicroservice.csproj" -c Release -o /app/build
+
+# Build the Server Application
+WORKDIR /src/MatthewsGalaxy.Server
+RUN dotnet build "MatthewsGalaxy.Server.csproj" -c Release -o /app/build
+
+# Stage 2: Publish the applications
+FROM build AS publish
+
+# Install the dotnet-ef tool
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Environment variables
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ConnectionStrings__MatthewsGalaxyConnectionString="Host=matthewsgalaxy-db; Database=MatthewsGalaxy; Username=postgres; Password=password"
+ENV Backend__BaseUrl="http://matthewsgalaxy-server:7263"
+
+# Publish Worker Microservice
+WORKDIR /src/MatthewsGalaxy.WorkerMicroservice
+RUN dotnet publish "MatthewsGalaxy.WorkerMicroservice.csproj" -c Release -o /app/publish
+
+# Publish Server Application
+WORKDIR /src/MatthewsGalaxy.Server
+RUN dotnet publish "MatthewsGalaxy.Server.csproj" -c Release -o /app/publish
+
+# Stage 3: Build runtime images
+
+# Runtime image for Worker Microservice
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS worker-runtime
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+EXPOSE 5000
+ENTRYPOINT ["dotnet", "MatthewsGalaxy.WorkerMicroservice.dll"]
+
+# Runtime image for Server Application
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS server-runtime
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+# Install PostgreSQL client and setup wait-for-database script
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends postgresql-client && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Create startup script for Server Application
+COPY --from=publish /src/MatthewsGalaxy.Server ./
+RUN echo "#!/bin/bash" > /app/startup.sh && \
+    echo "until pg_isready -h matthewsgalaxy-db -p 5432 -U postgres; do" >> /app/startup.sh && \
+    echo "    echo 'Waiting for PostgreSQL...'" >> /app/startup.sh && \
+    echo "    sleep 2" >> /app/startup.sh && \
+    echo "done" >> /app/startup.sh && \
+    echo "exec dotnet MatthewsGalaxy.WorkerMicroservice.dll" >> /app/startup.sh && \
+    chmod +x /app/startup.sh
+
+# Expose application port
+EXPOSE 8080
+
+# Entry point for Server Application
+ENTRYPOINT ["/app/startup.sh"]

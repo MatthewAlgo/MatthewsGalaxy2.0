@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post Card</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .mat-card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mat-card-actions button {
+      margin-right: 16px; /* Add space to the right of each button */
+    }
+    .mat-card-actions span {
+      margin-right: 16px; /* Add space between the span elements */
+    }
+    .mat-card-actions button:last-child {
+      margin-right: 0; /* Remove margin from the last button */
+    }
+    .mat-card-actions .divider {
+      border-left: 1px solid #ddd; /* Adjust the color to your preference */
+      height: 24px; /* Height of the divider */
+      margin-right: 16px; /* Space between divider and the next element */
+    }
+    .mat-card-actions .divider:last-of-type {
+      display: none; /* Hide the divider after the last item */
+    }
+    .divider {
+      border-left: 1px solid #ddd; /* Adjust the color to your preference */
+      height: 24px; /* Height of the divider */
+      margin-right: 16px; /* Space between divider and the next element */
+      margin-left: 16px; /* Space between divider and the previous element */
+      padding: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <mat-card class="application-blog-post-card"
+    style="background: linear-gradient(135deg, #333, #555); color: #fff;">
+    <mat-card-header>
+      <div class="category-container">
+        <span *ngFor="let category of categories" class="category-chip" (click)="redirectToCategory(category)"
+          style="cursor: pointer;"
+        >{{
+            category.name
+        }}</span>
+      </div>
+      <div>
+        <mat-card-title>{{article.title}}</mat-card-title>
+        <mat-card-subtitle>{{article.views}} views</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <img mat-card-image src="{{article.featuredImageURL !== undefined ? article.featuredImageURL! : 'https://via.placeholder.com/150'}}" alt="Photo of a blog post">
+    <mat-card-content>
+      <p style="font-family: 'Lobster', cursive;">  <!-- Lobster font -->
+        {{article.shortDescription}}
+      </p>
+    </mat-card-content>
+    <mat-chip (click)="viewArticle(article)" color="primary" mat-ripple class="centered-chip">View Article</mat-chip>
+    <mat-card-actions>
+      <!-- Share -->
+      <button mat-icon-button aria-label="Share this blog post" (click)="copyArticleLink()">
+        <mat-icon>share</mat-icon>
+      </button>
+      <span class="divider"></span> <!-- Divider -->
+      <!-- Comments -->
+      <button mat-icon-button aria-label="Comment on this blog post" *ngIf="this.authenticationService.isLoggedIn()">
+        <mat-icon>comment</mat-icon>
+      </button>
+      <span>{{comments}} Comments</span>
+      <span class="divider"></span> <!-- Divider -->
+      <!-- Likes -->
+      <button mat-icon-button aria-label="Like this blog post" (click)="toggleLike()" *ngIf="this.authenticationService.isLoggedIn()">
+        <mat-icon [ngClass]="{'liked': isLikedByUser}">favorite</mat-icon>
+      </button>
+      <span>{{likes}} Likes</span>
+    </mat-card-actions>
+    <div class="tags-container">
+      <mat-chip *ngFor="let tag of tags" [style.background-color]="getTagColor(tag)">
+        #{{ tag.tagName }}
+      </mat-chip>
+    </div>
+  </mat-card>
+</div>
+
+</body>
+</html>

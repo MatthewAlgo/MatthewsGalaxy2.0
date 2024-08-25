@@ -1,0 +1,25 @@
+<div class="dialog-container custom-dialog">
+  <h2 mat-dialog-title class="dialog-title">{{ title }}</h2>
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="formGroup" class="form-container">
+      <ng-container *ngFor="let input of data.inputs">
+        <div class="input-container">
+          <mat-form-field class="input-field" appearance="outline">
+            <mat-label>{{ input.label }}</mat-label>
+            <input matInput [formControlName]="input.controlName" [type]="input.type" />
+          </mat-form-field>
+        </div>
+      </ng-container>
+      <div class="input-container textarea-container">
+        <mat-form-field class="textarea-field" appearance="outline">
+          <mat-label>Content (Markdown)</mat-label>
+          <textarea matInput formControlName="content" class="textarea-editor"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close color="primary" [disabled]="formGroup.invalid" (click)="onSubmit()">Submit</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>

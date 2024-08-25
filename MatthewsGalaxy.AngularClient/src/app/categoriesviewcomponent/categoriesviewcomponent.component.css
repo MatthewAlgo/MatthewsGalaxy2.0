@@ -1,0 +1,110 @@
+.category-container {
+  background: rgba(25, 0, 84, 0.8); /* Dark purple with transparency */
+  backdrop-filter: blur(10px); /* Blur effect */
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Maximum width */
+  margin: 0 auto; /* Center the container */
+  width: 100%; /* Ensure it does not exceed parent width */
+}
+
+.category-grid {
+  display: flex;
+  flex-direction: column; /* Display categories vertically */
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.category-card {
+  position: relative;
+  background-color: #190054;
+  border-radius: 16px;
+  border: 1px solid #190054;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.category-content {
+  padding: 16px;
+}
+
+.category-title {
+  font-size: 1.5em;
+  margin: 0 0 8px;
+}
+
+.category-description {
+  font-size: 1em;
+  color: #666;
+  margin: 0 0 16px;
+}
+
+.category-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-link:hover {
+  text-decoration: none;
+}
+
+.view-articles {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  display: block;
+  margin-top: 16px;
+}
+
+.view-articles:hover {
+  text-decoration: underline;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  transform: scale(0);
+  pointer-events: none;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.category-link:active .ripple {
+  transform: scale(2);
+  opacity: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) { /* Tablets and smaller desktops */
+  .category-grid {
+    grid-template-columns: 1fr; /* Ensure it stays vertical */
+  }
+}
+
+@media (max-width: 600px) { /* Mobile phones */
+  .category-grid {
+    grid-template-columns: 1fr; /* Ensure it stays vertical */
+  }
+}
+
+.no-categories {
+  background-color: rgba(25, 0, 84, 0.8); /* Dark purple with transparency */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  font-size: 18px;
+}

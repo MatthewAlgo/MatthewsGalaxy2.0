@@ -1,0 +1,124 @@
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  background: linear-gradient(135deg, rgba(50, 0, 50, 0.7), rgba(25, 0, 25, 0.5));
+  border-radius: 20px;
+  padding: 15px;
+  color: white;
+  position: relative;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  max-height: none;
+}
+
+.blog-intro {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: none; /* Remove fixed height */
+}
+
+.blog-intro::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-intro-title {
+  font-size: 4vw;
+}
+
+.blog-intro-text {
+  font-size: 2.5vw;
+  color: #ddd;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .blog-intro-title {
+      font-size: 5vw;
+  }
+
+  .blog-intro-text {
+      font-size: 3vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-intro-title {
+      font-size: 6vw;
+  }
+
+  .blog-intro-text {
+      font-size: 4vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .blog-intro-title {
+      font-size: 7vw;
+  }
+
+  .blog-intro-text {
+      font-size: 5vw;
+  }
+}
+
+.blog-matthewsgalaxy-intro, .blog-matthewsgalaxy-body {
+  width: 100%;
+}
+
+.blog-matthewsgalaxy-intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blog-matthewsgalaxy-body {
+  padding: 0;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+}
+
+app-articleviewcomponent {
+  width: 100%;
+  max-width: 100%;
+}
+
+@keyframes all {
+  from {
+      transform: scale(0.9);
+  }
+  to {
+      transform: scale(1);
+  }
+}

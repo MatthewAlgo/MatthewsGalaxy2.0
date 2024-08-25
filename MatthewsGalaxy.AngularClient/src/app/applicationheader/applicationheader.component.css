@@ -1,0 +1,42 @@
+
+.mat-header {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-header h1 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.mat-header .logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.mat-header .menu {
+  display: flex;
+  gap: 10px;
+}
+
+.mat-header .menu a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mat-header .menu a:hover {
+  color: #666;
+}
+
+.application-header-component {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matthewsgalaxy-workermicroservice
+  namespace: matthewsgalaxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matthewsgalaxy-workermicroservice
+  template:
+    metadata:
+      labels:
+        app: matthewsgalaxy-workermicroservice
+    spec:
+      containers:
+      - name: workermicroservice
+        image: your-repository/matthewsgalaxy-workermicroservice:latest
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: matthewsgalaxy-config
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 5
+      restartPolicy: Always

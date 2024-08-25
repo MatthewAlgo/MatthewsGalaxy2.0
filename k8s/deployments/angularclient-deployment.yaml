@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matthewsgalaxy-angularclient
+  namespace: matthewsgalaxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matthewsgalaxy-angularclient
+  template:
+    metadata:
+      labels:
+        app: matthewsgalaxy-angularclient
+    spec:
+      containers:
+      - name: angularclient
+        image: your-repository/matthewsgalaxy-angularclient:latest
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: matthewsgalaxy-config
+      restartPolicy: Always

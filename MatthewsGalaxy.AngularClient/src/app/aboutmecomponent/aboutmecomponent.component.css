@@ -1,0 +1,105 @@
+.about-me-container {
+  background: linear-gradient(135deg, rgba(50, 0, 50, 0.7), rgba(25, 0, 25, 0.5));
+  border-radius: 20px;
+  padding: 25px;
+  color: white;
+  margin: 25px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.about-me-container::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  filter: blur(50px);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.about-me-container:hover::before {
+  filter: blur(70px);
+  opacity: 1;
+}
+
+.about-me-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+}
+
+.about-me-container h1, .about-me-container h2, .about-me-container h3, .about-me-container p {
+  margin: 0 0 15px;
+  line-height: 1.5;
+}
+
+.about-me-container h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.about-me-container h1:hover {
+  color: #ff6b6b;
+}
+
+.about-me-container h2 {
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.about-me-container h2:hover {
+  color: #ff6b6b;
+}
+
+.about-me-container h3 {
+  font-size: 1.75em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.about-me-container h3:hover {
+  color: #ff6b6b;
+}
+
+.about-me-container p {
+  font-size: 1.2em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.about-me-container p:hover {
+  color: #ffb3b3;
+}
+
+.about-me-container code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #f1f1f1;
+}
+
+.about-me-container a {
+  color: #ff6b6b;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.about-me-container a:hover {
+  color: #ff3b3b;
+  border-bottom-color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 10px rgba(255, 59, 59, 0.8);
+}

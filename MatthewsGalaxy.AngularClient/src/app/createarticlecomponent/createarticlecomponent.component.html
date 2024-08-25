@@ -1,0 +1,20 @@
+<div class="add-article-container">
+  <h2 class="add-article-title">Add New Article</h2>
+  <form (ngSubmit)="submitArticle()" #articleForm="ngForm" class="add-article-form">
+    <label for="article-title" class="form-label">Title</label>
+    <input type="text" id="article-title" class="form-input" placeholder="Enter article title" [(ngModel)]="localArticle.title" name="title" required>
+
+    <label for="article-description" class="form-label">Description</label>
+    <div id="article-description" #quillEditor></div>
+
+    <label for="article-short-description" class="form-label">Short Description</label>
+    <textarea id="article-short-description" class="form-textarea" placeholder="Enter short description" [(ngModel)]="localArticle.shortDescription" name="shortDescription" required></textarea>
+
+    <label for="article-image-url" class="form-label">Image URL</label>
+    <input type="text" id="article-image-url" class="form-input" placeholder="Enter image URL" [(ngModel)]="localArticle.featuredImageURL" name="imageUrl" required>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-article-button">Submit Article</button>
+    </div>
+  </form>
+</div>

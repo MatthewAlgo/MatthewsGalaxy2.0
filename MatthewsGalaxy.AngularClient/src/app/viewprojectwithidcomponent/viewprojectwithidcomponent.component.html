@@ -1,0 +1,28 @@
+<!-- src/app/view-project-with-id/view-project-with-id.component.html -->
+<div class="times-new-roman" *ngIf="project">
+  <div class="article-header">
+    <h1 class="article-title">{{ project.name }}</h1>
+    <div class="article-author">{{ project.projectType }}</div>
+    <div class="article-container">
+      <img [src]="project.localImageLocation" alt="Project Image" class="article-image">
+      <div class="article-date">{{ project.shortDescription }}</div>
+      <hr class="divider">
+
+      <!-- Tags Chips -->
+      <div class="chip-container">
+        <mat-chip *ngFor="let tag of project.tags">
+          #{{ tag }}
+        </mat-chip>
+      </div>
+      <markdown class="article-content" [innerHTML]="project.description"></markdown>
+      <hr class="divider">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!project">
+  <div class="article-header">
+    <h1 class="article-title article-not-found">Project Not Found</h1>
+    <div class="article-author article-not-found">The project you are looking for does not exist.</div>
+  </div>
+</div>
