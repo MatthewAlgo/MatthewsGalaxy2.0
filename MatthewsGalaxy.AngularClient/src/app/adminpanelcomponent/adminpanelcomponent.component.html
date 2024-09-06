@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -5,16 +7,171 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Include the refined CSS here */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      overflow-x: hidden;
+      /* Rounded */
+      border-radius: 10px;
+      /* Transparency */
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      font-family: 'Lobster', cursive;
+      text-align: center;
+      color: #00e676;
+      margin-bottom: 30px;
+    }
+
+    .top-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      outline: none;
+    }
+
+    .add-chip {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .add-chip:hover {
+      background-color: #0056b3;
+    }
+
+    .remove-chip {
+      background-color: #de0f0f;
+      color: white;
+    }
+
+    .remove-chip:hover {
+      background-color: #b30000;
+    }
+
+    .chip-text {
+      margin-right: 8px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-item {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 15px;
+    }
+
+    .category-list, .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .category-list .chip, .tag-list .chip {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+
+    .no-items {
+      background-color: rgba(128, 0, 128, 0.5);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+
+    .unauthorized-banner {
+      text-align: center;
+      color: #ff4444;
+      font-size: 1.5em;
+      margin: 20px;
+      padding: 20px;
+      background-color: rgba(255, 68, 68, 0.1);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+
+      .chip {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1, h2 {
+        font-size: 1.5em;
+      }
+
+      .chip {
+        font-size: 11px;
+        padding: 4px 8px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
-
-
-<!DOCTYPE html>
-<html lang="en">
 <body>
   <div class="container" *ngIf="currentUserRole === 'Admin'; else unauthorized">
-    <!-- Floating chips for adding projects and articles (moved to top) -->
+    <h1>Admin Panel</h1>
+
     <div class="top-chips">
       <button class="chip add-chip" (click)="createProject()">
         <span class="chip-text">Add Project</span>
@@ -27,8 +184,7 @@
     </div>
 
     <div class="section">
-
-      <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Articles</h2>
+      <h2>Articles</h2>
       <div class="grid-container" *ngIf="articles.length > 0; else noArticles">
         <div class="grid-item" *ngFor="let article of articles">
           <app-articlecard [article]="article"></app-articlecard>
@@ -41,50 +197,63 @@
               <span class="chip-text">Add Category</span>
               <mat-icon>category</mat-icon>
             </button>
-            <button class="chip remove-chip" (click)="removeArticle(article)">Remove Article</button>
+            <button class="chip remove-chip" (click)="removeArticle(article)">
+              <span class="chip-text">Remove Article</span>
+              <mat-icon>delete</mat-icon>
+            </button>
           </div>
           <div class="category-list">
             <div class="chip" *ngFor="let category of article.categories" (click)="removeCategory(article, category)"
-                [ngStyle]="{'background-color': getColorForString(category), 'padding': '10px', 'margin': '5px'}">
+                [ngStyle]="{'background-color': getColorForString(category)}">
               {{category}} <mat-icon>close</mat-icon>
             </div>
           </div>
           <div class="tag-list">
             <div class="chip" *ngFor="let tag of article.tags" (click)="removeTag(article, tag)"
-               [ngStyle]="{'background-color': getColorForString(tag), 'padding': '5px', 'margin': '5px'}">
+               [ngStyle]="{'background-color': getColorForString(tag)}">
               {{tag}} <mat-icon>close</mat-icon>
             </div>
           </div>
         </div>
       </div>
       <ng-template #noArticles>
-        <div class="no-articles">No articles available</div>
+        <div class="no-items">No articles available</div>
       </ng-template>
     </div>
-    <div class="section">
 
-      <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Projects</h2>
+    <div class="section">
+      <h2>Projects</h2>
       <div class="grid-container" *ngIf="projects.length > 0; else noProjects">
         <div class="grid-item" *ngFor="let project of projects">
           <app-projectcardcomponent [project]="project"></app-projectcardcomponent>
-          <button class="chip remove-chip" (click)="removeProject(project)">Remove Project</button>
+          <div class="button-group">
+            <button class="chip remove-chip" (click)="removeProject(project)">
+              <span class="chip-text">Remove Project</span>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
       <ng-template #noProjects>
-        <div class="no-projects">No projects available</div>
+        <div class="no-items">No projects available</div>
       </ng-template>
     </div>
-    <div class="section">
 
-      <h2 style="font-family: 'Lobster', cursive; color: #ffffff;">Users</h2>
+    <div class="section">
+      <h2>Users</h2>
       <div class="grid-container" *ngIf="users.length > 0; else noUsers">
         <div class="grid-item" *ngFor="let user of users">
           <app-usercard [identityUser]="user"></app-usercard>
-          <button class="chip remove-chip" (click)="removeUser(user)">Remove User</button>
+          <div class="button-group">
+            <button class="chip remove-chip" (click)="removeUser(user)">
+              <span class="chip-text">Remove User</span>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
       <ng-template #noUsers>
-        <div class="no-users">No users available</div>
+        <div class="no-items">No users available</div>
       </ng-template>
     </div>
   </div>

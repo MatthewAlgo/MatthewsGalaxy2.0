@@ -5,11 +5,7 @@ body {
   background-color: transparent;
 }
 
-h1, h2 {
-  text-align: center;
-  color: rgb(0, 255, 0);
-}
-
+/* Container and Section */
 .container {
   display: flex;
   flex-direction: column;
@@ -20,28 +16,32 @@ h1, h2 {
   overflow: hidden;
 }
 
-/* Section Container */
 .section {
   width: 100%;
   max-width: 1200px;
   margin-bottom: 40px;
+  text-align: center; /* Center the content within the section */
 }
 
 .section h2 {
   margin-bottom: 20px;
   font-family: 'Lobster', cursive;
   color: #ffffff;
+  font-size: 2.5rem; /* Base font size */
+  transition: font-size 0.3s ease; /* Smooth transition for font size changes */
 }
 
 /* Grid Layout for Cards */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
+  padding: 0;
 }
 
+/* Grid Items */
 .grid-item {
   display: flex;
   justify-content: center;
@@ -49,14 +49,79 @@ h1, h2 {
   background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 16px;
+  padding: 8px;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.grid-item:hover {
+  transform: scale(0.98); /* Slightly shrink on hover */
 }
 
 /* Center a single article */
 .grid-container.single-item {
   display: flex;
   justify-content: center;
+}
+
+/* No articles style */
+.no-articles-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.no-articles {
+  background-color: rgba(128, 0, 128, 0.5);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  font-size: 18px;
+}
+
+/* Floating Chips */
+.floating-chips {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .grid-item {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 400px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+
+  .grid-item {
+    padding: 4px;
+  }
 }
 
 /* Chip styles */
@@ -97,71 +162,27 @@ h1, h2 {
   background-color: #0056b3;
 }
 
-.floating-chips {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* No articles style */
-.no-articles-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.no-articles {
-  background-color: rgba(128, 0, 128, 0.5);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px;
-  font-size: 18px;
-}
-
-.unauthorized-banner {
-  text-align: center;
-  color: red;
-  font-size: 1.5em;
-  margin: 20px;
-}
-
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts for medium screens */
+  .section h2 {
+    font-size: 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts for smaller screens */
+  .section h2 {
+    font-size: 2rem;
   }
 }
 
-@media (max-width: 400px) {
-  .application-blog-post-card {
-    padding: 10px;
-    font-size: 14px;
+@media (max-width: 480px) {
+  .section h2 {
+    font-size: 1.8rem;
   }
+}
 
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr); /* 1 column per row on very small screens */
-  }
-
-  .mat-card-title, .mat-card-subtitle {
-    font-size: 18px;
-  }
-
-  .mat-card-actions button, .mat-chip {
-    font-size: 12px;
-    padding: 8px;
+@media (max-width: 320px) {
+  .section h2 {
+    font-size: 1.5rem;
   }
 }

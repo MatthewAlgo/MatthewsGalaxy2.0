@@ -252,7 +252,6 @@ h1, h2 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusts for medium screens */
   }
 
-  /* Decrease button text size */
   .chip {
     font-size: 12px;
   }
@@ -260,32 +259,32 @@ h1, h2 {
 
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts for small screens */
+    grid-template-columns: 1fr; /* Show only one item per row */
   }
 
   .grid-item {
-    padding: 12px;
+    padding: 8px; /* Reduce padding around each grid item */
+    margin: 0; /* Remove extra margin */
   }
 
-  /* Further decrease button text size */
   .chip {
     font-size: 11px;
-    padding: 8px 16px; /* Adjust padding as screen size shrinks */
+    padding: 8px 16px;
   }
 }
 
 @media (max-width: 400px) {
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts for very small screens */
+    grid-template-columns: 1fr; /* Ensure it stays one item per row */
   }
 
   .grid-item {
-    padding: 10px;
+    padding: 6px; /* Further reduce padding */
+    margin: 0; /* Ensure there's no margin causing overflow */
   }
 
-  /* Smallest button text size for mobile */
   .chip {
     font-size: 10px;
-    padding: 6px 12px; /* Even smaller padding */
+    padding: 6px 12px;
   }
 }

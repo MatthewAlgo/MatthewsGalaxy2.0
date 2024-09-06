@@ -20,7 +20,7 @@
     }
 
     .application-blog-post-card {
-      max-width: 400px;
+      max-width: 100%;
       width: 100%;
       margin: auto;
       overflow: hidden;
@@ -31,6 +31,8 @@
       color: #ffffff;
       position: relative;
       z-index: 10;
+      padding: 15px;
+      box-sizing: border-box;
     }
 
     .application-blog-post-card:hover {
@@ -58,9 +60,10 @@
       color: white;
       border-radius: 5px;
       padding: 5px 10px;
-      margin-right: 5px;
-      font-size: 0.875rem;
+      margin: 2px;
+      font-size: 0.75rem;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .application-blog-post-card img {
@@ -72,100 +75,163 @@
     .application-blog-post-card mat-card-content {
       padding: 15px;
       background-color: transparent;
+      color: #ffffff;
       font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
     }
 
     .mat-card-actions {
       display: flex;
-      justify-content: space-between;
-      padding: 15px;
+      justify-content: space-around;
+      padding: 10px;
       background-color: transparent;
+      flex-wrap: wrap;
     }
 
-    .mat-card-actions button {
-      margin-right: 16px;
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin: 5px;
       color: #ffffff;
     }
 
-    .mat-card-actions span {
-      margin-right: 16px;
+    .action-item button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 5px;
+      font-size: 1.2rem;
     }
 
-    .divider {
-      border-left: 1px solid #ddd;
-      height: 24px;
-      margin-right: 16px;
-      margin-left: 16px;
+    .action-item span {
+      margin-left: 5px;
+      font-size: 0.9rem;
     }
 
     .tags-container {
       display: flex;
       flex-wrap: wrap;
-      margin: 10px 0;
-      padding: 0 15px;
+      margin: 5px 0;
+      padding: 0 10px;
     }
 
     .tags-container mat-chip {
-      margin: 5px;
-      font-size: 0.875rem;
+      margin: 2px;
+      font-size: 0.75rem;
+      background-color: #444;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 15px;
     }
 
     .centered-chip {
       color: white;
       background-color: #011a33;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 10px auto;
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
       cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
     }
 
     .liked {
-      color: red;
+      color: #ff4081;
     }
 
-    /* Media query for very small screens */
     @media (max-width: 400px) {
       .application-blog-post-card {
         padding: 10px;
       }
 
-      .mat-card-title, .mat-card-subtitle {
+      .mat-card-title {
         font-size: 18px;
       }
 
-      .mat-card-actions button, .mat-chip {
-        font-size: 12px;
-        padding: 8px;
+      .mat-card-subtitle {
+        font-size: 14px;
       }
-      /* Smallest button text size for mobile */
-      .chip {
-        font-size: 10px;
-        padding: 6px 12px; /* Even smaller padding */
+
+      .action-item button {
+        font-size: 1rem;
+      }
+
+      .action-item span {
+        font-size: 0.7rem;
+      }
+
+      .category-chip, .tags-container mat-chip {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+      }
+
+      .centered-chip {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+
+      .application-blog-post-card mat-card-content {
+        font-size: 0.8rem;
       }
     }
 
-    /* Media query for tablets */
     @media (min-width: 401px) and (max-width: 768px) {
       .application-blog-post-card {
-        padding: 15px;
+        padding: 12px;
       }
 
-      .mat-card-title, .mat-card-subtitle {
+      .mat-card-title {
         font-size: 20px;
       }
 
-      .mat-card-actions button, .mat-chip {
-        font-size: 14px;
-        padding: 10px;
+      .mat-card-subtitle {
+        font-size: 16px;
       }
-      /* Further decrease button text size */
-      .chip {
-        font-size: 11px;
-        padding: 8px 16px; /* Adjust padding as screen size shrinks */
+
+      .action-item button {
+        font-size: 1.1rem;
       }
+
+      .action-item span {
+        font-size: 0.8rem;
+      }
+
+      .category-chip, .tags-container mat-chip {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+      }
+
+      .centered-chip {
+        font-size: 0.85rem;
+        padding: 7px 14px;
+      }
+
+      .application-blog-post-card mat-card-content {
+        font-size: 0.85rem;
+      }
+    }
+    .action-item button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 5px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .action-item button.liked {
+      color: #ff4081;
+    }
+
+    .action-item button:hover {
+      color: #ff4081;
+    }
+
+    .liked {
+      color: #ff4081;
     }
   </style>
 </head>
@@ -177,40 +243,41 @@
     <mat-card-header>
       <div class="category-container">
         <span *ngFor="let category of categories" class="category-chip" (click)="redirectToCategory(category)"
-          style="cursor: pointer;"
-        >{{
+          style="cursor: pointer;">{{
             category.name
         }}</span>
       </div>
       <div>
-        <mat-card-title>{{article.title}}</mat-card-title>
-        <mat-card-subtitle>{{article.views}} views</mat-card-subtitle>
+        <mat-card-title style="font-family: 'Lobster', cursive;">{{article.title}}</mat-card-title>
+        <mat-card-subtitle style="font-family: 'Lobster', cursive; color: #ffffff;">{{article.views}} views</mat-card-subtitle>
       </div>
     </mat-card-header>
     <img mat-card-image src="{{article.featuredImageURL !== undefined ? article.featuredImageURL! : 'https://via.placeholder.com/150'}}" alt="Photo of a blog post">
     <mat-card-content>
-      <p style="font-family: 'Lobster', cursive;">  <!-- Lobster font -->
+      <p style="font-family: 'Lobster', cursive;">
         {{article.shortDescription}}
       </p>
     </mat-card-content>
-    <mat-chip (click)="viewArticle(article)" color="primary" mat-ripple class="centered-chip">View Article</mat-chip>
+    <div class="centered-chip" (click)="viewArticle(article)" color="primary" mat-ripple>View Article</div>
     <mat-card-actions>
-      <!-- Share -->
-      <button mat-icon-button aria-label="Share this blog post" (click)="copyArticleLink()">
-        <mat-icon>share</mat-icon>
-      </button>
-      <span class="divider"></span> <!-- Divider -->
-      <!-- Comments -->
-      <button mat-icon-button aria-label="Comment on this blog post" *ngIf="this.authenticationService.isLoggedIn()">
-        <mat-icon>comment</mat-icon>
-      </button>
-      <span>{{comments}} Comments</span>
-      <span class="divider"></span> <!-- Divider -->
-      <!-- Likes -->
-      <button mat-icon-button aria-label="Like this blog post" (click)="toggleLike()" *ngIf="this.authenticationService.isLoggedIn()">
-        <mat-icon [ngClass]="{'liked': isLikedByUser}">favorite</mat-icon>
-      </button>
-      <span>{{likes}} Likes</span>
+      <div class="action-item">
+        <button aria-label="Share this blog post" (click)="copyArticleLink()">
+          <i class="fas fa-share-alt"></i>
+        </button>
+        <span>Share</span>
+      </div>
+      <div class="action-item" *ngIf="this.authenticationService.isLoggedIn()">
+        <button aria-label="Comment on this blog post">
+          <i class="fas fa-comment"></i>
+        </button>
+        <span>{{comments}} Comments</span>
+      </div>
+      <div class="action-item" *ngIf="this.authenticationService.isLoggedIn()">
+        <button aria-label="Like this blog post" (click)="toggleLike()" [class.liked]="isLikedByUser">
+          <i class="fas fa-heart" [class.liked]="isLikedByUser"></i>
+        </button>
+        <span>{{likes}} Likes</span>
+      </div>
     </mat-card-actions>
     <div class="tags-container">
       <mat-chip *ngFor="let tag of tags" [style.background-color]="getTagColor(tag)">
@@ -220,5 +287,6 @@
   </mat-card>
 </div>
 
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </body>
 </html>

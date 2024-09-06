@@ -118,13 +118,16 @@ export class ArticlecardComponent {
 
     if (computedHashId && username && email) {
       if (this.isLikedByUser) {
-        this.articleService.unlikeArticle(computedHashId, username, email).subscribe();
+        this.articleService.unlikeArticle(computedHashId, username, email).subscribe(() => {
+          this.isLikedByUser = false;
+          this.likes--;
+        });
       } else {
-        this.articleService.likeArticle(computedHashId, username, email).subscribe();
+        this.articleService.likeArticle(computedHashId, username, email).subscribe(() => {
+          this.isLikedByUser = true;
+          this.likes++;
+        });
       }
-
-      this.isLikedByUser = !this.isLikedByUser;
-      this.likes += this.isLikedByUser ? 1 : -1;
     } else {
       console.error('Required fields are missing');
     }
