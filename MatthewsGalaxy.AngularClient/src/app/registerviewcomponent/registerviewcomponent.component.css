@@ -2,10 +2,11 @@
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding: 20px;
-  width: 500px;
+  width: 100%; /* Make width 100% */
+  max-width: 500px; /* Set a maximum width */
   margin: 0 auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 50px; /* Increased bottom margin */
+  margin-bottom: 50px;
   padding: 0% 5% 5% 5%;
 }
 
@@ -58,18 +59,43 @@ button:hover {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  transition: all 0.3s ease-in-out; /* Transition effect */
+  transition: all 0.3s ease-in-out;
 }
 
 .form-group input:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Shadow effect on hover */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .register-container:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Shadow effect on hover */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 re-captcha.is-invalid > div {
   border: 1px solid #dc3545 !important;
   border-radius: 0.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 10px 20px; /* Reduce padding on small screens */
+  }
+
+  button {
+    padding: 10px; /* Adjust button padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding: 10px; /* Further reduce padding */
+  }
+
+  .register-container h2 {
+    font-size: 1.5rem; /* Adjust font size */
+  }
+
+  button {
+    padding: 8px; /* Further adjust button padding */
+  }
 }

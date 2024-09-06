@@ -35,13 +35,18 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
 }
 
-.about-me-container h1, .about-me-container h2, .about-me-container h3, .about-me-container p {
+/* Dynamic and responsive typography */
+.about-me-container h1,
+.about-me-container h2,
+.about-me-container h3,
+.about-me-container p {
   margin: 0 0 15px;
   line-height: 1.5;
 }
 
+/* Responsive font sizes */
 .about-me-container h1 {
-  font-size: 2.5em;
+  font-size: calc(1.5rem + 3vw); /* Scale with screen size */
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: color 0.3s ease;
@@ -52,7 +57,7 @@
 }
 
 .about-me-container h2 {
-  font-size: 2em;
+  font-size: calc(1.5rem + 2.5vw); /* Scale with screen size */
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: color 0.3s ease;
@@ -63,7 +68,7 @@
 }
 
 .about-me-container h3 {
-  font-size: 1.75em;
+  font-size: calc(1.25rem + 2vw); /* Scale with screen size */
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: color 0.3s ease;
@@ -74,7 +79,7 @@
 }
 
 .about-me-container p {
-  font-size: 1.2em;
+  font-size: calc(1rem + 1vw); /* Scale with screen size */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   transition: color 0.3s ease;
 }
@@ -83,6 +88,7 @@
   color: #ffb3b3;
 }
 
+/* Code block styling */
 .about-me-container code {
   background: rgba(255, 255, 255, 0.1);
   padding: 3px 6px;
@@ -91,6 +97,7 @@
   color: #f1f1f1;
 }
 
+/* Link styling */
 .about-me-container a {
   color: #ff6b6b;
   text-decoration: none;
@@ -102,4 +109,35 @@
   color: #ff3b3b;
   border-bottom-color: rgba(255, 255, 255, 1);
   text-shadow: 0 0 10px rgba(255, 59, 59, 0.8);
+}
+
+/* Fine-tuned font sizes for smaller screens */
+@media (max-width: 600px) {
+  .about-me-container h1 {
+    font-size: calc(1.25rem + 4vw); /* Smaller scaling for mobile */
+  }
+  .about-me-container h2 {
+    font-size: calc(1.25rem + 3.5vw);
+  }
+  .about-me-container h3 {
+    font-size: calc(1rem + 3vw);
+  }
+  .about-me-container p {
+    font-size: calc(0.875rem + 2vw);
+  }
+}
+
+@media (max-width: 400px) {
+  .about-me-container h1 {
+    font-size: calc(1rem + 3vw); /* Further reduced scaling */
+  }
+  .about-me-container h2 {
+    font-size: calc(1rem + 2.5vw);
+  }
+  .about-me-container h3 {
+    font-size: calc(0.875rem + 2vw);
+  }
+  .about-me-container p {
+    font-size: calc(0.75rem + 1.5vw);
+  }
 }

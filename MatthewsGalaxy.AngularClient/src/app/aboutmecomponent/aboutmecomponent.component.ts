@@ -9,14 +9,14 @@ export class AboutmecomponentComponent {
   markdownContent: string = `
     # About Me 😊
 
-    Hi there! I'm Matei-Alexandru Dinu, a software developer based in Bucharest, Romania. Currently, I'm pursuing a BSc in Computer Science at the University of Bucharest, expected to graduate in 2025. I have a keen interest in IoT connectivity and dynamic web applications, with professional experience at NXP Semiconductors.
+    Hi there! I'm Matei-Alexandru Dinu, a software developer. Currently, I'm pursuing a BSc in Computer Science at the University of Bucharest, expected to graduate in 2025. I have a keen interest in IoT connectivity and dynamic web applications, with professional experience at NXP.
 
     ## Education 📚
     - **BSc Computer Science**, University of Bucharest, Romania (Oct 2022 - Jun 2025)
       - Third year, honors student
 
     ## Professional Experience 💼
-    ### Software Engineer Intern at NXP Semiconductors (March 2023 - Present)
+    ### Software Engineer Intern at NXP (March 2023 - Present)
     - Developed a full-stack IoT application using Python and Flutter.
     - Designed a dynamic packet routing system leveraging multiprocessing and shared memory.
     - Enabled OTA updates with multiple client connections via WebSockets.

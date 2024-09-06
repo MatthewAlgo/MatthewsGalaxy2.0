@@ -135,13 +135,23 @@ namespace MatthewsGalaxy.Server
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();
-
+                        builder.WithOrigins("https://localhost:4200")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
                         builder.WithOrigins("https://matthewsgalaxy.com")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();
-
+                        builder.WithOrigins("http://matthewsgalaxy.com")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
                         builder.WithOrigins("http://localhost")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                        builder.WithOrigins("https://localhost")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();

@@ -31,16 +31,21 @@ h1, h2 {
 
 .section h2 {
   margin-bottom: 20px;
+  font-family: 'Lobster', cursive;
+  color: #ffffff;
 }
 
 /* Grid styles */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
   gap: 20px;
   width: 100%;
+  box-sizing: border-box;
+  justify-items: center; /* Center grid items */
 }
 
+/* Centered card */
 .grid-item {
   display: flex;
   flex-direction: column;
@@ -50,6 +55,13 @@ h1, h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   padding: 16px;
   box-sizing: border-box;
+  max-width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Top chips styles */
@@ -61,8 +73,8 @@ h1, h2 {
 }
 
 .top-chips .chip {
-  font-size: 14px; /* Adjust font size if needed */
-  padding: 10px 20px; /* Adjust padding to make text less close to button edges */
+  font-size: 14px;
+  padding: 10px 20px;
 }
 
 /* Button group styles */
@@ -77,14 +89,14 @@ h1, h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px; /* Increased height for better spacing */
-  padding: 0 16px; /* Increased padding for better spacing */
+  height: 40px;
+  padding: 0 16px;
   border-radius: 16px;
   cursor: pointer;
   border: none;
   outline: none;
   transition: background-color 0.3s ease;
-  font-family: 'Roboto', sans-serif; /* Ensure consistent font */
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Add chip styles */
@@ -137,7 +149,6 @@ h1, h2 {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: #2c2c2c;
   color: #ffffff;
-  position: relative;
 }
 
 .project-card:hover {
@@ -233,4 +244,48 @@ h1, h2 {
 .category-list .chip,
 .tag-list .chip {
   cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusts for medium screens */
+  }
+
+  /* Decrease button text size */
+  .chip {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts for small screens */
+  }
+
+  .grid-item {
+    padding: 12px;
+  }
+
+  /* Further decrease button text size */
+  .chip {
+    font-size: 11px;
+    padding: 8px 16px; /* Adjust padding as screen size shrinks */
+  }
+}
+
+@media (max-width: 400px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts for very small screens */
+  }
+
+  .grid-item {
+    padding: 10px;
+  }
+
+  /* Smallest button text size for mobile */
+  .chip {
+    font-size: 10px;
+    padding: 6px 12px; /* Even smaller padding */
+  }
 }

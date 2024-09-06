@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "http://localhost:4200",
+"RedirectUrl": "",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\Matthew\\Downloads\\MatthewsGalaxy2.0\\MatthewsGalaxy2.0\\MatthewsGalaxy.ServerDir\\MatthewsGalaxy.Server\\..\\..\\MatthewsGalaxy.AngularClient",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

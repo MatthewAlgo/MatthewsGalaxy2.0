@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AppConfigService {
-  public readonly API_SERVER_IP_ADDRESS = 'http://localhost:7263';
+  public readonly API_SERVER_IP_ADDRESS = 'http://localhost:5130';
 
   constructor() {}
 }

@@ -34,7 +34,7 @@ namespace MatthewsGalaxy.WorkerMicroservice.Controllers
         {
             try
             {
-                var verificationURL = $"{_configuration["Backend:BaseURL"]}/auth/User/verify-user-email?email={destination}&token={token}";
+                var verificationURL = $"{_configuration["Backend:BaseURLForProduction"]}/auth/User/verify-user-email?email={destination}&token={token}";
                 await _emailService.SendVerificationEmailAsync(destination, verificationURL);
                 return Ok();
             }
@@ -78,9 +78,9 @@ namespace MatthewsGalaxy.WorkerMicroservice.Controllers
 
                 // Send an email to the user to verify their email address
                 var token = await _emailRepository.GetVerificationEmailTokenizedIdSubscriptionsAsync(emailAddress);
-                var verificationURL = $"{_configuration["Backend:BaseURL"]}/api/EmailVerification/verify-email-address-subscriptions/{token}";
+                var verificationURL = $"{_configuration["Backend:BaseURLForProduction"]}/api/EmailVerification/verify-email-address-subscriptions/{token}";
                 var unsubscribeVerificationURL =
-                    $"{_configuration["Backend:BaseURL"]}/api/EmailVerification/remove-email-address-subscriptions/{emailAddress}/{token}";
+                    $"{_configuration["Backend:BaseURLForProduction"]}/api/EmailVerification/remove-email-address-subscriptions/{emailAddress}/{token}";
                 await _emailService.SendSubscriptionVerificationEmailAsync(emailAddress, verificationURL,
                     unsubscribeVerificationURL);
                 return Ok("Email address added successfully! Please verify your email address.");

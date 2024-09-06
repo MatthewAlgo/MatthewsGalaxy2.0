@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -19,6 +20,7 @@ h1, h2 {
   overflow: hidden;
 }
 
+/* Section Container */
 .section {
   width: 100%;
   max-width: 1200px;
@@ -27,13 +29,17 @@ h1, h2 {
 
 .section h2 {
   margin-bottom: 20px;
+  font-family: 'Lobster', cursive;
+  color: #ffffff;
 }
 
+/* Grid Layout for Cards */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns per row */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
   gap: 20px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .grid-item {
@@ -47,12 +53,13 @@ h1, h2 {
   box-sizing: border-box;
 }
 
-/* Add this new rule to center a single article */
+/* Center a single article */
 .grid-container.single-item {
   display: flex;
   justify-content: center;
 }
 
+/* Chip styles */
 .chip {
   display: flex;
   align-items: center;
@@ -100,6 +107,7 @@ h1, h2 {
   z-index: 1000;
 }
 
+/* No articles style */
 .no-articles-box {
   display: flex;
   justify-content: center;
@@ -126,8 +134,34 @@ h1, h2 {
 }
 
 /* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts for medium screens */
+  }
+}
+
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: repeat(1, 1fr); /* 1 column per row on small screens */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .application-blog-post-card {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 column per row on very small screens */
+  }
+
+  .mat-card-title, .mat-card-subtitle {
+    font-size: 18px;
+  }
+
+  .mat-card-actions button, .mat-chip {
+    font-size: 12px;
+    padding: 8px;
   }
 }

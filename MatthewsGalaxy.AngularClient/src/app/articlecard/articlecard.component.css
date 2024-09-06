@@ -116,9 +116,53 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer; /* Add pointer cursor for clickable element */
+  cursor: pointer;
 }
 
 .liked {
   color: red;
+}
+
+span {
+  font-size: 0.65rem;
+  color: #ffffff; /* Light text color */
+}
+
+/* Responsive Styles */
+/* Media query for small screens */
+@media (max-width: 400px) {
+  .application-blog-post-card {
+    width: 100%;
+    max-width: none;
+    padding: 10px;
+  }
+
+  .mat-card-title, .mat-card-subtitle {
+    font-size: 18px;
+  }
+
+  .mat-card-actions button, .mat-chip {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .mat-card-actions span {
+    display: none;
+  }
+}
+
+/* Media query for tablets */
+@media (min-width: 401px) and (max-width: 768px) {
+  .application-blog-post-card {
+    padding: 15px;
+  }
+
+  .mat-card-title, .mat-card-subtitle {
+    font-size: 20px;
+  }
+
+  .mat-card-actions button, .mat-chip {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
